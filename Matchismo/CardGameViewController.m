@@ -18,13 +18,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *matchDisplayLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *matchGameMode;
-@property (weak, nonatomic) IBOutlet UIButton *dealButton;
 @property (weak, nonatomic) IBOutlet UISlider *historySlider;
 @end
 
 @implementation CardGameViewController
-
-// git push test from XCode
 
 - (CardMatchingGame *)game {
     if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
@@ -46,18 +43,22 @@
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
     }
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.matchDisplayLabel.text = self.game.matchMessage;
 }
 
-- (void)setFlipCount:(int)flipCount
-{
+- (void)setFlipCount:(int)flipCount {
     _flipCount = flipCount;
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
 
-- (IBAction)flipCard:(UIButton *)sender
-{
+- (IBAction)dealNewGame {
+    self.game = nil;
+    self.flipCount = 0;
+    [self updateUI];
+}
+
+- (IBAction)flipCard:(UIButton *)sender {
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
     [self updateUI];

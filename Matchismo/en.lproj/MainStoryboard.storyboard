@@ -312,12 +312,14 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dealNewGame" destination="2" eventType="touchUpInside" id="mHK-n5-Y80"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="dealButton" destination="dPb-jC-qZh" id="lri-69-xrm"/>
                         <outlet property="flipsLabel" destination="AEs-Le-8ef" id="wof-i6-HZL"/>
                         <outlet property="historySlider" destination="EeD-GY-vcv" id="IaU-Et-dCg"/>
                         <outlet property="matchDisplayLabel" destination="aSH-Vw-qpQ" id="jrq-23-Upr"/>
@@ -352,7 +354,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="dealButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="historySlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="matchDisplayLabel" candidateClass="UILabel"/>
